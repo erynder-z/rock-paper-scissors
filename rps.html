@@ -1,0 +1,40 @@
+<script>
+
+function singleRoundRPS() {
+    const weapons = ["Rock", "Paper", "Scissors"];
+    let playerSelection = prompt("Choose your weapon", "");
+    playerSelection = playerSelection.toLocaleLowerCase();
+
+    let computerSelection = weapons[Math.floor(Math.random() * weapons.length)];
+    computerSelection = computerSelection.toLocaleLowerCase();
+
+        if (playerSelection == "rock" && computerSelection == "rock") {
+            console.log("Tie! Both chose Rock");
+        } else if (playerSelection == "rock" && computerSelection == "paper") {
+            console.log("You lose! Paper beats Rock");
+        } else if (playerSelection == "rock" && computerSelection == "scissors") {
+            console.log("You win! Rock beats Scissors");
+        } else if (playerSelection == "paper" && computerSelection == "rock") {
+            console.log("You win! Paper beats Rock");
+        } else if (playerSelection == "paper" && computerSelection == "paper") {
+            console.log("Tie! Both chose Paper");
+        } else if (playerSelection == "paper" && computerSelection == "scissors") {
+            console.log("You lose! Scisors beats Paper");
+        } else if (playerSelection == "scissors" && computerSelection == "rock") {
+            console.log("You lose! Rock beats Scissors");
+        } else if (playerSelection == "scissors" && computerSelection == "paper") {
+            console.log("Your win! Scissors beats Paper");
+        } else if (playerSelection == "scissors" && computerSelection == "scissors") {
+            console.log("Tie! Both chose Scissors");
+        } else {console.log("This weapon is not allowed!")}
+}
+
+/* randomly return either "Rock", "Paper" or "Scissors"
+function computerPlay() {
+    const weapons = ["Rock", "Paper", "Scissors"];
+        let cpuWeapon = weapons[Math.floor(Math.random() * weapons.length)];
+        console.log(cpuWeapon);
+}
+*/
+
+</script>

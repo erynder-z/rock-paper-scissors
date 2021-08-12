@@ -1,18 +1,14 @@
 <script>
 
-function computerPlay() {
+function singleRoundRPS() {
     const weapons = ["Rock", "Paper", "Scissors"];
-        let computerSelection = weapons[Math.floor(Math.random() * weapons.length)];
-        return computerSelection;
-}
-  
+    let playerSelection = prompt("Choose your weapon", "");
+    playerSelection = playerSelection.toLowerCase();
 
-function playRound(playerSelection, computerSelection) {
+    let computerSelection = weapons[Math.floor(Math.random() * weapons.length)];
+    computerSelection = computerSelection.toLowerCase();
 
-    playerSelection = prompt("Choose your weapon", "").toLowerCase();
-    computerSelection = computerPlay().toLowerCase();
-
-    if (playerSelection == "rock" && computerSelection == "rock") {
+        if (playerSelection == "rock" && computerSelection == "rock") {
             return ("Tie! Both chose Rock");
         } else if (playerSelection == "rock" && computerSelection == "paper") {
             return ("You lose! Paper beats Rock");
@@ -30,8 +26,15 @@ function playRound(playerSelection, computerSelection) {
             return ("Your win! Scissors beats Paper");
         } else if (playerSelection == "scissors" && computerSelection == "scissors") {
             return ("Tie! Both chose Scissors");
-        } else {return("This weapon is not allowed!")}
+        } else {return ("This weapon is not allowed!")}
 }
 
+/* randomly return either "Rock", "Paper" or "Scissors"
+function computerPlay() {
+    const weapons = ["Rock", "Paper", "Scissors"];
+        let cpuWeapon = weapons[Math.floor(Math.random() * weapons.length)];
+        console.log(cpuWeapon);
+}
+*/
 
 </script>

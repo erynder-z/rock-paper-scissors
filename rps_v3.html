@@ -1,0 +1,71 @@
+<script>
+
+let playerScore = 0;
+let computerScore = 0;
+let announceResult = "";
+
+function computerPlay() {
+    const weapons = ["Rock", "Paper", "Scissors"];
+        let computerSelection = weapons[Math.floor(Math.random() * weapons.length)];
+        return computerSelection;
+}
+  
+
+function playRound(playerSelection, computerSelection) {
+
+    playerSelection = prompt("Choose your weapon", "").toLowerCase();
+    computerSelection = computerPlay().toLowerCase();
+
+    if (playerSelection == "rock" && computerSelection == "rock") {
+            playerScore++;
+            computerScore++;
+            announceResult = "Tie! Both chose Rock";
+            return (announceResult);
+        } else if (playerSelection == "rock" && computerSelection == "paper") {
+            computerScore++;
+            announceResult = "You lose! Paper beats Rock";
+            return (announceResult);
+        } else if (playerSelection == "rock" && computerSelection == "scissors") {
+            playerScore++;
+            announceResult = "You win! Rock beats Scissors";
+            return (announceResult);
+        } else if (playerSelection == "paper" && computerSelection == "rock") {
+            playerScore++;
+            announceResult = "You win! Paper beats Rock";
+            return (announceResult);
+        } else if (playerSelection == "paper" && computerSelection == "paper") {
+            playerScore++;
+            computerScore++;
+            announceResult = "Tie! Both chose Paper";
+            return (announceResult);
+        } else if (playerSelection == "paper" && computerSelection == "scissors") {
+            computerScore++;
+            announceResult = "You lose! Scisors beats Paper";
+            return (announceResult);
+        } else if (playerSelection == "scissors" && computerSelection == "rock") {
+            computerScore++;
+            announceResult = "You lose! Rock beats Scissors";
+            return announceResult;
+        } else if (playerSelection == "scissors" && computerSelection == "paper") {
+            playerScore++;
+            announceResult = "Your win! Scissors beats Paper";
+            return (announceResult);
+        } else if (playerSelection == "scissors" && computerSelection == "scissors") {
+            playerScore++;
+            computerScore++;
+            announceResult = "Tie! Both chose Scissors";
+            return (announceResult);
+        } else {announceResult = "This weapon is not allowed!";
+            return ("This weapon is not allowed!")}
+}
+
+function game() {
+        for (let numberOfRoundsPlayed = 0; numberOfRoundsPlayed < 5; numberOfRoundsPlayed++) {
+            playRound();
+            console.log(announceResult);
+            console.log("Player score" + playerScore);
+            console.log("Computer score" + computerScore);
+        }
+}
+
+</script>

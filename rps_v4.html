@@ -13,7 +13,7 @@ function computerPlay() {
 
 function playRound(playerSelection, computerSelection) {
 
-    playerSelection = prompt("Choose your weapon", "").toLowerCase();
+    playerSelection = prompt("Choose between ROCK, PAPER or SCISSORS", "").toLowerCase();
     computerSelection = computerPlay().toLowerCase();
 
     if (playerSelection == computerSelection) {
@@ -49,14 +49,39 @@ function playRound(playerSelection, computerSelection) {
             return ("This weapon is not allowed!")}
 }
 
+function finalResult() {
+        if (playerScore > computerScore) {
+            console.log("::FINAL RESULT::")
+            console.log("You won the Game!");
+            console.log("Player score " + playerScore);
+            console.log("Computer score " + computerScore);
+        } else if (playerScore < computerScore) {
+            console.log("::FINAL RESULT::")
+            console.log("You lost the Game!");
+            console.log("Player score " + playerScore);
+            console.log("Computer score " + computerScore);
+        } else {
+            console.log("::FINAL RESULT::")
+            console.log("It's a tie!");
+        }
+}
+
+function resetScore() {
+    playerScore = 0;
+    computerScore = 0;
+}
+
 function game() {
         console.log("Choose between the mighty ROCK, the wrapping PAPER or the cutting SCISSORS")
         for (let numberOfRoundsPlayed = 0; numberOfRoundsPlayed < 5; numberOfRoundsPlayed++) {
             playRound();
             console.log(announceResult);
-            console.log("Player score" + playerScore);
-            console.log("Computer score" + computerScore);
+            console.log("Player score " + playerScore);
+            console.log("Computer score " + computerScore);
+            console.log(" ");
         }
+        finalResult();
+        resetScore();
 }
 
 </script>

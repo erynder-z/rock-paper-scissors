@@ -1,16 +1,17 @@
 <script>
-
+/* Defines the needed variables in global scope. */
 let playerScore = 0;
 let computerScore = 0;
 let announceResult = "";
 
+/* lets the computer choose a random item from array "weapons".*/
 function computerPlay() {
     const weapons = ["Rock", "Paper", "Scissors"];
         let computerSelection = weapons[Math.floor(Math.random() * weapons.length)];
         return computerSelection;
 }
   
-
+/* plays a single round of the game. compares playerSelection and computerSelection variables, announces a winner and adds 1 point to the winneres score. */
 function playRound(playerSelection, computerSelection) {
 
     playerSelection = prompt("Choose between ROCK, PAPER or SCISSORS", "").toLowerCase();
@@ -49,6 +50,7 @@ function playRound(playerSelection, computerSelection) {
             return ("This weapon is not allowed!")}
 }
 
+/* compares the final scores and announces the winner. */
 function finalResult() {
         if (playerScore > computerScore) {
             console.log("::FINAL RESULT::")
@@ -66,11 +68,13 @@ function finalResult() {
         }
 }
 
+/* resets the score to 0 */
 function resetScore() {
     playerScore = 0;
     computerScore = 0;
 }
 
+/* plays 5 rounds of the game via a loop. Announces the results for each round, the final result after 5 rounds and resets the scores to 0. */
 function game() {
         console.log("Choose between the mighty ROCK, the wrapping PAPER or the cutting SCISSORS")
         for (let numberOfRoundsPlayed = 0; numberOfRoundsPlayed < 5; numberOfRoundsPlayed++) {

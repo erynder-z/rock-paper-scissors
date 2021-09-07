@@ -2,8 +2,7 @@
 let playerScore = 0;
 let computerScore = 0;
 let announceResult = "";
-let finalScore;
-let gameOverCheck = false;
+let finalScore = "";
 
 /* lets the computer choose a random item from array "weapons".*/
 function computerPlay() {
@@ -12,68 +11,42 @@ function computerPlay() {
         return computerSelection;
 }
   
-/* plays a single round of the game. compares playerSelection and computerSelection variables, announces a winner and adds 1 point to the winneres score. */
+/* plays one round of the game. compares playerSelection and computerSelection variables, announces a winner for that round and adds 1 point to the score. */
 function playRound(playerSelection, computerSelection) {
 
     computerSelection = computerPlay().toLowerCase();
 
     if (playerSelection == computerSelection) {
             announceResult = "It's a tie";
-            return (announceResult);
+          
         } else if (playerSelection == "rock" && computerSelection == "paper") {
             computerScore++;
             announceResult = "You lose! Paper beats Rock";
-            return (announceResult);
+          
         } else if (playerSelection == "rock" && computerSelection == "scissors") {
             playerScore++;
             announceResult = "You win! Rock beats Scissors";
-            return (announceResult);
+            
         } else if (playerSelection == "paper" && computerSelection == "rock") {
             playerScore++;
             announceResult = "You win! Paper beats Rock";
-            return (announceResult);
+            
         } else if (playerSelection == "paper" && computerSelection == "scissors") {
             computerScore++;
             announceResult = "You lose! Scisors beats Paper";
-            return (announceResult);
+            
         } else if (playerSelection == "scissors" && computerSelection == "rock") {
             computerScore++;
             announceResult = "You lose! Rock beats Scissors";
-            return (announceResult);
+          
         } else if (playerSelection == "scissors" && computerSelection == "paper") {
             playerScore++;
             announceResult = "Your win! Scissors beats Paper";
-            return (announceResult);
+          
         } else {announceResult = "This weapon is not allowed!";
             return ("This weapon is not allowed!")}
 }
 
-/* compares the final scores and announces the winner. */
-function finalResult() {
-        if (playerScore > computerScore) {
-            finalScore = ("You won the Game!");
-        } else if (playerScore < computerScore) {
-            finalScore = ("You lost the Game!");
-        } else {
-            finalScore = ("It's a tie!");
-        }
-        finalResultContent.textContent = finalScore;
-        resetScore();
-}
-
-/* resets the score to 0 */
-function resetScore() {
-    playerScore = 0;
-    computerScore = 0;
-}
-
-/*checks if a player has reached 5 points */
-function checkRound() {
-    if (playerScore >= 5 || computerScore >= 5) {
-        gameOverCheck = true;
-        finalResult();
-    }
-}
 
 /*creates the different containers for results and score*/
 const resultsContainer = document.querySelector("#results_container");
@@ -97,23 +70,31 @@ finalResultContent.classList.add("finalResultsContent");
 finalResultContainer.appendChild(finalResultContent);
 
 
+/* functions for the callback in the eventListener*/
+function playRock() {
+    playRound("rock", computerPlay);
+}
+
+function playPaper() {
+    playRound("paper", computerPlay);
+}
+
+function playScissors() {
+    playRound("scissors", computerPlay);
+}
+
 /*creates event listeners for the buttons, executes the functions and updates DOM elements*/
 const btnR = document.querySelector("#rockButton");
-btnR.addEventListener("click", () => {
-  playRound("rock", computerPlay);
-});
-btnR.addEventListener('click', function (e) {
+btnR.addEventListener("click", playRock);
+btnR.addEventListener("click", function (e) {
     resultsContent.textContent = announceResult;
     playerScoreContent.textContent = playerScore;
     computerScoreContent.textContent = computerScore;
     checkRound();
 });
 
-
 const btnP = document.querySelector("#paperButton");
-btnP.addEventListener("click", () => {
-  playRound("paper", computerPlay);
-});
+btnP.addEventListener("click", playPaper);
 btnP.addEventListener("click", function (e) {
     resultsContent.textContent = announceResult;
     playerScoreContent.textContent = playerScore;
@@ -121,11 +102,8 @@ btnP.addEventListener("click", function (e) {
     checkRound();
 });
 
-
 const btnS = document.querySelector("#scissorsButton");
-btnS.addEventListener("click", () => {
-  playRound("scissors", computerPlay);
-});
+btnS.addEventListener("click", playScissors);
 btnS.addEventListener("click", function (e) {
     resultsContent.textContent = announceResult;
     playerScoreContent.textContent = playerScore;
@@ -133,6 +111,67 @@ btnS.addEventListener("click", function (e) {
     checkRound();
 });
 
+const resetbtn = document.querySelector("#resetButton");
+resetbtn.addEventListener("click", () => {
+    resetScore();
+});
 
+
+/*checks if a player has reached 5 points and calls finalResult */
+function checkRound() {
+    if (playerScore == 5 || computerScore == 5) {
+        finalResult();
+    }
+}
   
+
+/* compares the final scores, announces the winner and removes the eventListeners from the buttons. */
+function finalResult() {
+        if (playerScore > computerScore) {
+            finalScore = ("You won the Game!");
+        } else if (playerScore < computerScore) {
+            finalScore = ("You lost the Game!");
+        } else {
+            finalScore = ("It's a tie!");
+        }
+        finalResultContent.textContent = finalScore;
+        btnR.removeEventListener("click", playRock);
+        btnP.removeEventListener("click", playPaper);
+        btnS.removeEventListener("click", playScissors);
+}
+
+/* resets the score to 0 and re-adds the eventListeners to the buttons */
+function resetScore() {
+    playerScore = 0;
+    computerScore = 0;
+    announceResult = "";
+    resultsContent.textContent = "";
+    finalResultContent.textContent = "";
+    playerScoreContent.textContent = playerScore;
+    computerScoreContent.textContent = computerScore;
+    btnR.addEventListener("click", playRock);
+    btnR.addEventListener("click", function (e) {
+        resultsContent.textContent = announceResult;
+        playerScoreContent.textContent = playerScore;
+        computerScoreContent.textContent = computerScore;
+    });
+
+    btnP.addEventListener("click", playPaper);
+    btnP.addEventListener("click", function (e) {
+        resultsContent.textContent = announceResult;
+        playerScoreContent.textContent = playerScore;
+        computerScoreContent.textContent = computerScore;
+});
+
+    btnS.addEventListener("click", playScissors);
+    btnS.addEventListener("click", function (e) {
+        resultsContent.textContent = announceResult;
+        playerScoreContent.textContent = playerScore;
+        computerScoreContent.textContent = computerScore;
+});
+}
+
+
+
+
 

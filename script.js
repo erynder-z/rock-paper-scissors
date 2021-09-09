@@ -1,12 +1,16 @@
 /* Defines the needed variables in global scope. */
 let playerScore = 0;
 let computerScore = 0;
-let announceResult = "";
-let finalScore = "";
+let announceResult;
+let finalScore;
+const placeholder1 = document.getElementById("results_placeholder"); //grabs a placeholder below the results container that is removed upon button click
+const placeholder2 = document.getElementById("player_placeholder");
+const placeholder3 = document.getElementById("cpu_placeholder");
+const placeholder4 = document.getElementById("final_placeholder");
 
 /* lets the computer choose a random item from array "weapons".*/
 function computerPlay() {
-    const weapons = ["Rock", "Paper", "Scissors"];
+    const weapons = ["rock", "paper", "scissors"];
         let computerSelection = weapons[Math.floor(Math.random() * weapons.length)];
         return computerSelection;
 }
@@ -14,7 +18,7 @@ function computerPlay() {
 /* plays one round of the game. compares playerSelection and computerSelection variables, announces a winner for that round and adds 1 point to the score. */
 function playRound(playerSelection, computerSelection) {
 
-    computerSelection = computerPlay().toLowerCase();
+    computerSelection = computerPlay();
 
     if (playerSelection == computerSelection) {
             announceResult = "It's a tie";
@@ -90,6 +94,9 @@ btnR.addEventListener("click", function (e) {
     resultsContent.textContent = announceResult;
     playerScoreContent.textContent = playerScore;
     computerScoreContent.textContent = computerScore;
+    placeholder1.remove();
+    placeholder2.remove();
+    placeholder3.remove();
     checkRound();
 });
 
@@ -99,6 +106,9 @@ btnP.addEventListener("click", function (e) {
     resultsContent.textContent = announceResult;
     playerScoreContent.textContent = playerScore;
     computerScoreContent.textContent = computerScore;
+    placeholder1.remove();
+    placeholder2.remove();
+    placeholder3.remove();
     checkRound();
 });
 
@@ -108,18 +118,24 @@ btnS.addEventListener("click", function (e) {
     resultsContent.textContent = announceResult;
     playerScoreContent.textContent = playerScore;
     computerScoreContent.textContent = computerScore;
+    placeholder1.remove();
+    placeholder2.remove();
+    placeholder3.remove();
     checkRound();
 });
 
 const resetbtn = document.querySelector("#resetButton");
 resetbtn.addEventListener("click", () => {
     resetScore();
+    placeholder2.remove();
+    placeholder3.remove();
 });
 
 
 /*checks if a player has reached 5 points and calls finalResult */
 function checkRound() {
     if (playerScore == 5 || computerScore == 5) {
+        placeholder4.remove();
         finalResult();
     }
 }
@@ -138,6 +154,7 @@ function finalResult() {
         btnR.removeEventListener("click", playRock);
         btnP.removeEventListener("click", playPaper);
         btnS.removeEventListener("click", playScissors);
+        resetbtn.style.backgroundColor = "pink";
 }
 
 /* resets the score to 0 and re-adds the eventListeners to the buttons */
@@ -169,8 +186,10 @@ function resetScore() {
         playerScoreContent.textContent = playerScore;
         computerScoreContent.textContent = computerScore;
 });
+resetbtn.style.backgroundColor = "revert";
+resultsContainer.appendChild(placeholder1); //re-inserts the placeholder1 into the resultsContainer
+finalResultContainer.appendChild(placeholder4);
 }
-
 
 
 

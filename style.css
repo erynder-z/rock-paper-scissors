@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap');
+
+html {
+    font-family: 'IBM Plex Mono', monospace;
+    background-color: #d3d9e8;
+}
+
+.weapons_outer {
+    display: block;
+    justify-content: center;
+    margin:auto;
+    text-align: center;
+    padding-top: 2em;
+    
+}
+
+.weapons_outer > button {
+    min-width: 10rem;
+}
+
+.results_outer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+    text-align: center;
+    max-width: 50%;
+    min-width: 50%;
+    padding-top: 1em;
+    font-size: x-large;
+}
+
+.final_result {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 2em;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    max-width: 50%;
+    min-width: 50%;
+    font-size: x-large;
+}
+
+.reset {
+    padding-left: 10em;
+    padding-top: 2em;
+}
+
+
+
+#rockButton {
+    background:url(./images/rock.png) no-repeat;
+    cursor:pointer;
+    border:none;
+    width:256px;
+    height:256px;
+    text-align: left;
+}
+
+#rockButton:hover {
+    border-style:solid;
+    border-width: 5px;
+    border-color: #93a4cf;
+    transform: scale(1.2);
+ }
+
+#paperButton {
+    background:url(./images/paper.png) no-repeat;
+    cursor:pointer;
+    border:none;
+    width:256px;
+    height:256px;
+    text-align: left;
+}
+
+#paperButton:hover {
+    border-style: solid;
+    border-width: 5px;
+    border-color: #93a4cf;
+    transform: scale(1.2);
+ }
+
+#scissorsButton {
+    background:url(./images/scissors.png) no-repeat;
+    cursor:pointer;
+    border:none;
+    width:256px;
+    height:256px;
+    text-align: left;
+}
+
+#scissorsButton:hover {
+    border-style: solid;
+    border-width: 5px;
+    border-color: #93a4cf;
+    transform: scale(1.2);
+ }
+

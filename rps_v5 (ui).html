@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html>
-    <html lang="en"></html>
+    <html lang="en">
   <head>
     <meta charset="UTF-8">
     <title>Rock-Paper-Scissors</title>
+    <link rel="stylesheet" href="normalize.css">
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
   </head>
   <body>
 
@@ -17,15 +19,19 @@
 
       <div class="results_outer">
       <h2>Round result:</h2>
+      <div id="results_placeholder">...</div>
       <div id="results_container"></div></div>
 
       <div class="results_outer">
       <h2>Score:</h2>
       <div id="playerScore_container">Player</div>
-      <div id="computerScore_container">CPU</div></div>
+      <div id="player_placeholder">0</div>
+      <div id="computerScore_container">CPU</div>
+      <div id="cpu_placeholder">0</div></div>
 
       <div class="final_result">
-        <div id="finalResult_container"></div></div>
+      <div id="finalResult_container"></div>
+      <div id="final_placeholder">...</div></div>
 
       <div class="reset">
         <button id="resetButton">RESET GAME</button>

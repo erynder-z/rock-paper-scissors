@@ -44,7 +44,7 @@ html {
 }
 
 .reset {
-    padding-left: 10em;
+    padding-left: 1em;
     padding-top: 2em;
 }
 
@@ -98,3 +98,19 @@ html {
     transform: scale(1.2);
  }
 
+ @media (max-width: 75em) {
+    #rockButton, #paperButton, #scissorsButton {
+        display: flex;
+        width: 128px;
+        height: 128px;
+        background-size: 50%;
+        margin: auto;
+        align-items: top;
+        justify-content: center;
+        background-position: center;
+
+    }
+    .weapons_outer, .results_outer, .final_result {
+        font-size: small;
+      }
+  }

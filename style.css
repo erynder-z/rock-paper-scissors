@@ -5,6 +5,11 @@ html {
     background-color: #d3d9e8;
 }
 
+body {
+    height: 100vh;
+    width: 100vw;
+    transition: all 1s;
+}
 .weapons_outer {
     display: block;
     justify-content: center;
@@ -26,7 +31,6 @@ html {
     text-align: center;
     max-width: 50%;
     min-width: 50%;
-
     font-size: x-large;
 }
 
@@ -41,14 +45,17 @@ html {
     max-width: 50%;
     min-width: 50%;
     font-size: x-large;
+    transition: all 1s;
+}
+
+#finalResult_container {
+    transition: all 1s;
 }
 
 .reset {
     padding-left: 1em;
     padding-top: 0.5em;
 }
-
-
 
 #rockButton {
     background:url(./images/rock.png) no-repeat;
@@ -57,6 +64,7 @@ html {
     width:256px;
     height:256px;
     text-align: start;
+    transition: all 0.5s;
     scale: 0.9;
 }
 
@@ -74,6 +82,7 @@ html {
     width:256px;
     height:256px;
     text-align: left;
+    transition: all 0.5s;
     scale: 0.9;
 }
 
@@ -85,7 +94,16 @@ html {
     width:256px;
     height:256px;
     text-align: left;
+    transition: all 0.5s;
     scale: 0.9;
+}
+
+#resetButton {
+    transition: all 0.5s;
+    position: fixed;
+    bottom: 0;
+    margin-left: 2rem;
+    margin-bottom: 2rem;
 }
 
  @media (max-width: 75em) {

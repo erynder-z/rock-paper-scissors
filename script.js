@@ -21,34 +21,49 @@ function playRound(playerSelection, computerSelection) {
     computerSelection = computerPlay();
 
     if (playerSelection == computerSelection) {
+            document.getElementById("results_container").style.color = "black";
             announceResult = "It's a tie";
+            checkRound();
           
         } else if (playerSelection == "rock" && computerSelection == "paper") {
             computerScore++;
+            document.getElementById("results_container").style.color = "red";
             announceResult = "You lose! Paper beats Rock";
+            checkRound();
           
         } else if (playerSelection == "rock" && computerSelection == "scissors") {
             playerScore++;
+            document.getElementById("results_container").style.color = "blue";
             announceResult = "You win! Rock beats Scissors";
+            checkRound();
             
         } else if (playerSelection == "paper" && computerSelection == "rock") {
             playerScore++;
+            document.getElementById("results_container").style.color = "blue";
             announceResult = "You win! Paper beats Rock";
+            checkRound();
             
         } else if (playerSelection == "paper" && computerSelection == "scissors") {
             computerScore++;
+            document.getElementById("results_container").style.color = "red";
             announceResult = "You lose! Scisors beats Paper";
+            checkRound();
             
         } else if (playerSelection == "scissors" && computerSelection == "rock") {
             computerScore++;
+            document.getElementById("results_container").style.color = "red";
             announceResult = "You lose! Rock beats Scissors";
+            checkRound();
           
         } else if (playerSelection == "scissors" && computerSelection == "paper") {
             playerScore++;
-            announceResult = "Your win! Scissors beats Paper";
+            document.getElementById("results_container").style.color = "blue";
+            announceResult = "You win! Scissors beats Paper";
+            checkRound();
           
         } else {announceResult = "This weapon is not allowed!";
             return ("This weapon is not allowed!")}
+            checkRound();
 }
 
 
@@ -97,7 +112,6 @@ btnR.addEventListener("click", function (e) {
     placeholder1.remove();
     placeholder2.remove();
     placeholder3.remove();
-    checkRound();
 });
 
 const btnP = document.querySelector("#paperButton");
@@ -109,7 +123,6 @@ btnP.addEventListener("click", function (e) {
     placeholder1.remove();
     placeholder2.remove();
     placeholder3.remove();
-    checkRound();
 });
 
 const btnS = document.querySelector("#scissorsButton");
@@ -121,7 +134,6 @@ btnS.addEventListener("click", function (e) {
     placeholder1.remove();
     placeholder2.remove();
     placeholder3.remove();
-    checkRound();
 });
 
 const resetbtn = document.querySelector("#resetButton");
@@ -144,17 +156,23 @@ function checkRound() {
 /* compares the final scores, announces the winner and removes the eventListeners from the buttons. */
 function finalResult() {
         if (playerScore > computerScore) {
+            document.body.style.background = "#03adad";
+            document.getElementById("finalResult_container").style.scale = 1.5;
             finalScore = ("You won the Game!");
         } else if (playerScore < computerScore) {
+            document.body.style.background = "#ad0303";
+            document.getElementById("finalResult_container").style.scale = 1.5;
             finalScore = ("You lost the Game!");
         } else {
-            finalScore = ("It's a tie!");
+            document.getElementById("finalResult_container").style.color = "pink";
+            document.getElementById("finalResult_container").style.scale = 1.5;
+            finalScore = ("How is this possible??");
         }
         finalResultContent.textContent = finalScore;
         btnR.removeEventListener("click", playRock);
         btnP.removeEventListener("click", playPaper);
         btnS.removeEventListener("click", playScissors);
-        resetbtn.style.backgroundColor = "pink";
+        resetbtn.style.scale = 1.5;
 }
 
 /* resets the score to 0 and re-adds the eventListeners to the buttons */
@@ -162,7 +180,9 @@ function resetScore() {
     playerScore = 0;
     computerScore = 0;
     announceResult = "";
+    document.getElementById("results_container").style.color = "revert";
     resultsContent.textContent = "";
+    document.getElementById("finalResult_container").style.color = "revert";
     finalResultContent.textContent = "";
     playerScoreContent.textContent = playerScore;
     computerScoreContent.textContent = computerScore;
@@ -189,7 +209,29 @@ function resetScore() {
 resetbtn.style.backgroundColor = "revert";
 resultsContainer.appendChild(placeholder1); //re-inserts the placeholder1 into the resultsContainer
 finalResultContainer.appendChild(placeholder4);
+document.body.style.background = "revert";
+document.getElementById("finalResult_container").style.scale = "revert";
+resetbtn.style.scale = "revert";
 }
+  
+  // KONAMI-CODE
+const pattern = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+let current = 0;
+
+const keyHandler = function (event) {
+	if (pattern.indexOf(event.key) < 0 || event.key !== pattern[current]) {
+		current = 0;
+		return;
+	}
+	current++;
+	if (pattern.length === current) {
+		current = 0;
+		window.alert("cheat activated!");
+        playerScore = 5;
+        checkRound();
+	}
+};
+document.addEventListener('keydown', keyHandler, false);
 
 
 

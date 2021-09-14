@@ -56,7 +56,7 @@ html {
     border:none;
     width:256px;
     height:256px;
-    text-align: left;
+    text-align: start;
     scale: 0.9;
 }
 
@@ -91,7 +91,6 @@ html {
  @media (max-width: 75em) {
     #rockButton, #paperButton, #scissorsButton {
         display: flex;
-        width: 128px;
         height: 128px;
         background-size: 50%;
         margin: auto;

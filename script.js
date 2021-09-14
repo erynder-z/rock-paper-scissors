@@ -166,7 +166,7 @@ function finalResult() {
         } else {
             document.getElementById("finalResult_container").style.color = "pink";
             document.getElementById("finalResult_container").style.scale = 1.5;
-            finalScore = ("How is this possible??");
+            finalScore = ("You lost the battle but won the war!");
         }
         finalResultContent.textContent = finalScore;
         btnR.removeEventListener("click", playRock);

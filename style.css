@@ -6,14 +6,12 @@ html {
 }
 
 body {
-    height: 100vh;
-    width: 100vw;
+    min-height: 100vh;
+    min-width: 100vw;
     transition: all 1s;
 }
 .weapons_outer {
     display: block;
-    justify-content: center;
-    margin:auto;
     text-align: center;
     padding-top: 2em;
     
@@ -26,7 +24,6 @@ body {
 .results_outer {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     margin: auto;
     text-align: center;
     max-width: 50%;
@@ -36,12 +33,10 @@ body {
 
 .final_result {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     margin-top: 1em;
     margin-left: auto;
     margin-right: auto;
-    text-align: center;
     max-width: 50%;
     min-width: 50%;
     font-size: x-large;
@@ -106,16 +101,28 @@ body {
     margin-bottom: 2rem;
 }
 
+
+
  @media (max-width: 75em) {
     #rockButton, #paperButton, #scissorsButton {
         display: flex;
-        height: 128px;
-        background-size: 50%;
+        width: 160px;
+        height: 160px;
+        background-size: contain;
         margin: auto;
-        align-items: top;
-        justify-content: center;
-        background-position: center;
+    }
 
+
+    @media (max-width: 75em) {
+        #resetButton {
+            position: absolute;
+            scale: 0.8;
+            bottom: 8rem;
+            left: 0rem;
+;           transform: rotate(270deg);
+            margin: auto;
+
+        }
     }
     
     .weapons_outer, .results_outer, .final_result {
